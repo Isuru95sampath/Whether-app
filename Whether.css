@@ -43,3 +43,71 @@ main form button{
 main form i{
     opacity: 0.7;
 }
+main .result{
+    padding-top: 20px;
+    text-align: center;
+}
+main .result .name{
+    font-weight: bold;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+main .temperature img{
+    width: 150px;
+    filter: drop-shadow(0 10px 50px #070707);
+}
+main .temperature figcaption{
+    font-size: 3em;
+}
+main .description{
+    padding: 10px 0 30px;
+}
+main ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+main li{
+    background-color: #f7ac21;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px 10px;
+    background-image: linear-gradient(
+        to bottom,
+        transparent 50%,
+        #0003 50%
+    );
+    font-weight: bold;
+    font-size: small;
+}
+main ul li i{
+    font-size: 2em;
+    margin: 20px 0;
+    display: block!important;
+}
+main li:nth-child(2){
+    background-color: #d15282;
+}
+main li:nth-child(3){
+    background-color: #173075;
+}
+main.error{
+    animation: errorEffect 0.2s linear 1;
+}/*if error then shake*/
+@keyframes errorEffect{
+    0%{
+        transform: translate(16px, 5px)
+    }
+    
+    50%{
+        transform: translate(-5px, 2px)
+    }
+    
+    100%{
+        transform: translate(0, 0); 
+    }
+}
