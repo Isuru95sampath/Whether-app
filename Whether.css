@@ -1,113 +1,209 @@
+/* Global Reset */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    font-family: "Poppins", sans-serif;
     transition: background-image 0.5s ease-in-out;
-    font-family: sans-serif;
 }
 
-
-*{
-    padding: 0;
-    margin: 0;
-}
-main{
-    width: 300px;
-    height: max-content;
-    min-height: 300px;
-    background-color: #ffffff;
-    border-radius: 30px;
-    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.2);
+/* Card Container */
+main {
+    width: 100%;
+    max-width: 400px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     padding: 30px;
-    box-sizing: border-box;
-}
-main form{
-    border: 1px solid #5552;
-    display: flex;
-    border-radius: 30px;
-    justify-content: space-between;
-}
-main form input, 
-main form button{
-    border: none;
-    background-color: transparent;
-    outline: none;
-    padding: 10px;
-    box-sizing: border-box;
-}
-main form i{
-    opacity: 0.7;
-}
-main .result{
-    padding-top: 20px;
     text-align: center;
+    transition: transform 0.3s ease;
 }
-main .result .name{
+
+main:hover {
+    transform: translateY(-5px);
+}
+
+/* Form Styling */
+main form {
+    display: flex;
+    align-items: center;
+    background: #f3f3f3;
+    border-radius: 30px;
+    padding: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+main form:focus-within {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+main form input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+main form button {
+    border: none;
+    background: #6e8efb;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+main form button:hover {
+    background: #5a78db;
+}
+
+/* Weather Result */
+.result {
+    padding-top: 20px;
+}
+
+
+.result .name {
     font-weight: bold;
-    font-size: large;
+    font-size: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
-main .temperature img{
-    width: 150px;
-    filter: drop-shadow(0 10px 50px #070707);
+
+.temperature img {
+    width: 120px;
+    filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.2));
 }
-main .temperature figcaption{
-    font-size: 3em;
+
+.temperature figcaption {
+    font-size: 2.5rem;
+    font-weight: bold;
 }
-main .description{
-    padding: 10px 0 30px;
+
+/* Weather Details */
+.description {
+    padding: 15px 0;
+    font-size: 1.1rem;
+    color: #333;
 }
-main ul{
+
+/* Stats Grid */
+/* Stats Grid */
+ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+    padding: 0;
+    margin-top: 20px;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px);
+    animation: fadeInList 0.8s ease-in-out forwards;
 }
-main li{
-    background-color: #f7ac21;
-    color: #fff;
+
+/* Individual List Item Animation */
+li {
+    background: linear-gradient(135deg, #f7ac21, #f5a623);
+    color: white;
     border-radius: 10px;
-    padding: 20px 10px;
-    background-image: linear-gradient(
-        to bottom,
-        transparent 50%,
-        #0003 50%
-    );
+    padding: 15px;
+    text-align: center;
     font-weight: bold;
-    font-size: small;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeInItem 0.6s ease-in-out forwards;
 }
-main ul li i{
-    font-size: 2em;
-    margin: 20px 0;
-    display: block!important;
+
+/* Staggered animation for each li */
+li:nth-child(1) { animation-delay: 0.2s; }
+li:nth-child(2) { animation-delay: 0.4s; }
+li:nth-child(3) { animation-delay: 0.6s; }
+li:nth-child(4) { animation-delay: 0.8s; }
+li:nth-child(5) { animation-delay: 1s; }
+
+/* Hover Effect */
+li:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
 }
-main li:nth-child(2){
-    background-color: #d15282;
+
+/* Fade-in List Animation */
+@keyframes fadeInList {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-main li:nth-child(3){
-    background-color: #173075;
+
+/* Individual Item Fade-in */
+@keyframes fadeInItem {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
-main.error{
+
+
+li {
+    background: linear-gradient(135deg, #f7ac21, #f5a623);
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+li:hover {
+    transform: scale(1.05);
+}
+
+li i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Different Colors for List Items */
+li:nth-child(2) {
+    background: linear-gradient(135deg, #d15282, #c94070);
+}
+
+li:nth-child(3) {
+    background: linear-gradient(135deg, #173075, #1b3a8d);
+}
+
+/* Error Animation */
+main.error {
     animation: errorEffect 0.2s linear 1;
-}/*if error then shake*/
-@keyframes errorEffect{
-    0%{
-        transform: translate(16px, 5px)
-    }
-    
-    50%{
-        transform: translate(-5px, 2px)
-    }
-    
-    100%{
-        transform: translate(0, 0); 
-    }
+}
+
+@keyframes errorEffect {
+    0% { transform: translate(10px, 5px); }
+    50% { transform: translate(-5px, 2px); }
+    100% { transform: translate(0, 0); }
 }
